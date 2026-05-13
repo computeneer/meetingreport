@@ -1,67 +1,9 @@
 {
   "meetings": [
-    {
-      "id": "1",
-      "title": "Sprint Planning",
-      "date": "2026-05-10",
-      "notes": "Q2 hedefleri tartışıldı, takım büyümesi onaylandı."
-    },
-    {
-      "id": "2",
-      "title": "Müşteri Toplantısı",
-      "date": "2026-05-11",
-      "notes": "Yeni özelliklerin roadmap'i konuşuldu."
-    },
-    {
-      "title": "Yeni Toplantı",
-      "date": "2026-05-12",
-      "notes": "Berat Demircan\nÖylesine bir toplantı yapıldı.\nNasıl yapıldıysa yapıldı.",
-      "id": "l4_oJVsIjn4"
-    }
+
   ],
   "tasks": [
-    {
-      "id": "1",
-      "meetingId": "1",
-      "assignee": "Ahmet",
-      "description": "Database migration işlemlerini yapılması",
-      "completed": true
-    },
-    {
-      "id": "2",
-      "meetingId": "1",
-      "assignee": "Ayşe",
-      "description": "Frontend test senaryolarının yazılması",
-      "completed": true
-    },
-    {
-      "id": "3",
-      "meetingId": "2",
-      "assignee": "Mehmet",
-      "description": "API dokümantasyonunun güncellenmesi",
-      "completed": true
-    },
-    {
-      "meetingId": "l4_oJVsIjn4",
-      "assignee": "Ali",
-      "description": "Toplantı notlarının gösterilmesi",
-      "completed": false,
-      "id": "2Tx_a4XZlpA"
-    },
-    {
-      "meetingId": "l4_oJVsIjn4",
-      "assignee": "Zeynep",
-      "description": "Toplantı notlarının listelenmesi",
-      "completed": false,
-      "id": "b8wOsSFeWtY"
-    },
-    {
-      "meetingId": "l4_oJVsIjn4",
-      "assignee": "Ayşe",
-      "description": "Toplantı",
-      "completed": false,
-      "id": "SrP8wJzH7Dc"
-    }
+    
   ],
   "$schema": "./node_modules/json-server/schema.json"
 }
