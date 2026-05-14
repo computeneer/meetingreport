@@ -22,10 +22,13 @@ export default function DefaultLayout() {
 						<NavLink to="/meetings" className={linkClass}>
 							Toplantılar
 						</NavLink>
-						<NavLink to="/tasks" className={linkClass}>
-							Görevler
-						</NavLink>
-					</nav>
+					<NavLink to="/tasks" className={linkClass}>
+						Görevler
+					</NavLink>
+					<NavLink to="/users" className={linkClass}>
+						Kullanıcılar
+					</NavLink>
+				</nav>
 				</div>
 			</header>
 			<main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8">

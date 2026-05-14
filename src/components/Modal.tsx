@@ -40,13 +40,13 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
 						exit={{ opacity: 0 }}
 					/>
 					<motion.div
-						className="relative z-10 w-full max-w-lg rounded-xl bg-white p-6 shadow-2xl"
+						className="relative z-10 flex w-full max-w-lg flex-col rounded-xl bg-white shadow-2xl max-h-[80vh]"
 						initial={{ scale: 0.9, opacity: 0, y: 20 }}
 						animate={{ scale: 1, opacity: 1, y: 0 }}
 						exit={{ scale: 0.9, opacity: 0, y: 20 }}
 						transition={{ type: "spring", duration: 0.4 }}
 					>
-						<div className="mb-4 flex items-center justify-between">
+						<div className="flex items-center justify-between p-6 pb-4">
 							<h2 className="text-xl font-bold text-primary-dark">{title}</h2>
 							<button
 								onClick={onClose}
@@ -56,7 +56,9 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
 								&times;
 							</button>
 						</div>
-						{children}
+						<div className="overflow-y-auto px-6 pb-6">
+							{children}
+						</div>
 					</motion.div>
 				</motion.div>
 			)}

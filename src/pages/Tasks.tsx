@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { taskApi, meetingApi } from "../lib/api";
+import { taskApi, meetingApi, userApi } from "../lib/api";
 import { Modal } from "../components/Modal";
 import { ConfirmModal } from "../components/ConfirmModal";
-import { USERS } from "../lib/constants";
-import type { Task, Meeting } from "../types";
+import type { Task, Meeting, User } from "../types";
 
 const emptyTask: Omit<Task, "id"> = {
 	meetingId: "",
-	assignee: USERS[0],
+	assignee: "",
 	description: "",
 	completed: false,
 };
@@ -16,6 +15,7 @@ const emptyTask: Omit<Task, "id"> = {
 export default function Tasks() {
 	const [tasks, setTasks] = useState<Task[]>([]);
 	const [meetings, setMeetings] = useState<Meeting[]>([]);
+	const [users, setUsers] = useState<User[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [editing, setEditing] = useState<Task | null>(null);
@@ -27,10 +27,15 @@ export default function Tasks() {
 		(async () => {
 			setLoading(true);
 			try {
-				const [t, m] = await Promise.all([taskApi.list(), meetingApi.list()]);
+				const [t, m, u] = await Promise.all([
+					taskApi.list(),
+					meetingApi.list(),
+					userApi.list(),
+				]);
 				if (!cancelled) {
 					setTasks(t);
 					setMeetings(m);
+					setUsers(u);
 				}
 			} catch (err) {
 				console.error("Veriler yüklenemedi:", err);
@@ -46,9 +51,14 @@ export default function Tasks() {
 	const fetchData = async () => {
 		setLoading(true);
 		try {
-			const [t, m] = await Promise.all([taskApi.list(), meetingApi.list()]);
+			const [t, m, u] = await Promise.all([
+				taskApi.list(),
+				meetingApi.list(),
+				userApi.list(),
+			]);
 			setTasks(t);
 			setMeetings(m);
+			setUsers(u);
 		} catch (err) {
 			console.error("Veriler yüklenemedi:", err);
 		} finally {
@@ -58,7 +68,11 @@ export default function Tasks() {
 
 	const openAdd = () => {
 		setEditing(null);
-		setForm({ ...emptyTask, meetingId: meetings[0]?.id ?? "" });
+		setForm({
+			...emptyTask,
+			meetingId: meetings[0]?.id ?? "",
+			assignee: users[0]?.name ?? "",
+		});
 		setIsModalOpen(true);
 	};
 
@@ -213,9 +227,9 @@ export default function Tasks() {
 							}
 							className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
 						>
-							{USERS.map((u) => (
-								<option key={u} value={u}>
-									{u}
+							{users.map((u) => (
+								<option key={u.id} value={u.name}>
+									{u.name}
 								</option>
 							))}
 						</select>

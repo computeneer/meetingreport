@@ -1,8 +1,13 @@
+export interface User {
+	id: string;
+	name: string;
+}
+
 export interface Meeting {
 	id: string;
 	title: string;
 	date: string;
-	notes: string;
+	notes: string[];
 }
 
 export interface Task {

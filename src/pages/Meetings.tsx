@@ -8,7 +8,7 @@ import type { Meeting } from "../types";
 const emptyMeeting: Omit<Meeting, "id"> = {
 	title: "",
 	date: "",
-	notes: "",
+	notes: [""],
 };
 
 export default function Meetings() {
@@ -57,16 +57,17 @@ export default function Meetings() {
 
 	const openEdit = (m: Meeting) => {
 		setEditing(m);
-		setForm({ title: m.title, date: m.date, notes: m.notes });
+		setForm({ title: m.title, date: m.date, notes: [...m.notes] });
 		setIsModalOpen(true);
 	};
 
 	const handleSave = async () => {
 		try {
+			const cleaned = { ...form, notes: form.notes.filter((n) => n.trim() !== "") };
 			if (editing) {
-				await meetingApi.update(editing.id, form);
+				await meetingApi.update(editing.id, cleaned);
 			} else {
-				await meetingApi.create(form);
+				await meetingApi.create(cleaned);
 			}
 			setIsModalOpen(false);
 			await fetchMeetings();
@@ -82,6 +83,25 @@ export default function Meetings() {
 		} catch (err) {
 			console.error("Silme hatası:", err);
 		}
+	};
+
+	const addNote = () => {
+		setForm((f) => ({ ...f, notes: [...f.notes, ""] }));
+	};
+
+	const updateNote = (index: number, value: string) => {
+		setForm((f) => {
+			const next = [...f.notes];
+			next[index] = value;
+			return { ...f, notes: next };
+		});
+	};
+
+	const removeNote = (index: number) => {
+		setForm((f) => {
+			const next = f.notes.filter((_, i) => i !== index);
+			return { ...f, notes: next.length ? next : [""] };
+		});
 	};
 
 	return (
@@ -120,7 +140,13 @@ export default function Meetings() {
 										{m.date}
 									</span>
 								</div>
-								<p className="mb-4 text-sm text-gray-600">{m.notes}</p>
+								{m.notes.length > 0 && (
+									<ul className="mb-4 list-disc space-y-1 pl-4 text-sm text-gray-600">
+										{m.notes.map((note, idx) => (
+											<li key={idx}>{note}</li>
+										))}
+									</ul>
+								)}
 								<div className="flex gap-2">
 									<button
 										onClick={() => openEdit(m)}
@@ -175,18 +201,38 @@ export default function Meetings() {
 						/>
 					</div>
 					<div>
-						<label className="mb-1 block text-sm font-medium text-gray-700">
-							Notlar
-						</label>
-						<textarea
-							value={form.notes}
-							onChange={(e) =>
-								setForm((f) => ({ ...f, notes: e.target.value }))
-							}
-							rows={3}
-							className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-							placeholder="Toplantı notları..."
-						/>
+						<div className="mb-1 flex items-center justify-between">
+							<label className="block text-sm font-medium text-gray-700">
+								Notlar
+							</label>
+							<button
+								onClick={addNote}
+								type="button"
+								className="rounded-md bg-accent-yellow px-2 py-1 text-xs font-medium text-primary-dark transition-colors hover:bg-yellow-400"
+							>
+								+ Not Ekle
+							</button>
+						</div>
+						<div className="space-y-2">
+							{form.notes.map((note, idx) => (
+								<div key={idx} className="flex gap-2">
+									<textarea
+										value={note}
+										onChange={(e) => updateNote(idx, e.target.value)}
+										rows={2}
+										className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+										placeholder={`Not ${idx + 1}`}
+									/>
+									<button
+										onClick={() => removeNote(idx)}
+										type="button"
+										className="self-start rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-600 transition-colors hover:bg-red-200"
+									>
+										Kaldır
+									</button>
+								</div>
+							))}
+						</div>
 					</div>
 					<div className="flex justify-end gap-3 pt-2">
 						<button

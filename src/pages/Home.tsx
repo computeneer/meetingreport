@@ -56,9 +56,13 @@ export default function Home() {
 										{meeting.date}
 									</span>
 								</div>
-								<p className="mb-3 text-sm text-gray-600">
-									{meeting.notes}
-								</p>
+								{meeting.notes.length > 0 && (
+									<ul className="mb-3 list-disc space-y-1 pl-4 text-sm text-gray-600">
+										{meeting.notes.map((note, idx) => (
+											<li key={idx}>{note}</li>
+										))}
+									</ul>
+								)}
 								{meetingTasks.length > 0 ? (
 									<ul className="space-y-2">
 										{meetingTasks.map((task) => (

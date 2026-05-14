@@ -1,5 +1,5 @@
 import { API_BASE } from "./constants";
-import type { Meeting, Task } from "../types";
+import type { Meeting, Task, User } from "../types";
 
 async function fetchJson<T>(url: string, options?: RequestInit): Promise<T> {
 	const res = await fetch(url, options);
@@ -47,6 +47,27 @@ export const taskApi = {
 		}),
 	delete: (id: string) =>
 		fetch(`${API_BASE}/tasks/${id}`, { method: "DELETE" }).then((r) => {
+			if (!r.ok) throw new Error(`HTTP ${r.status}: ${r.statusText}`);
+		}),
+};
+
+export const userApi = {
+	list: () => fetchJson<User[]>(`${API_BASE}/users`),
+	get: (id: string) => fetchJson<User>(`${API_BASE}/users/${id}`),
+	create: (data: Omit<User, "id">) =>
+		fetchJson<User>(`${API_BASE}/users`, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(data),
+		}),
+	update: (id: string, data: Partial<User>) =>
+		fetchJson<User>(`${API_BASE}/users/${id}`, {
+			method: "PATCH",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(data),
+		}),
+	delete: (id: string) =>
+		fetch(`${API_BASE}/users/${id}`, { method: "DELETE" }).then((r) => {
 			if (!r.ok) throw new Error(`HTTP ${r.status}: ${r.statusText}`);
 		}),
 };

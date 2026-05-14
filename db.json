@@ -1,9 +1,55 @@
 {
-  "meetings": [
-
-  ],
-  "tasks": [
-    
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+	"meetings": [],
+	"tasks": [],
+	"users": [
+		{
+			"name": "Zafer",
+			"id": "dEECPyJIkEM"
+		},
+		{
+			"name": "Ayşe",
+			"id": "dDFi7oLzpUk"
+		},
+		{
+			"name": "Üzeyr",
+			"id": "aYCxg6VDHNM"
+		},
+		{
+			"name": "Merve",
+			"id": "yDA94XhfiL8"
+		},
+		{
+			"name": "Melissa",
+			"id": "vH05oP6LrLA"
+		},
+		{
+			"name": "Akın",
+			"id": "keA0ibgniLc"
+		},
+		{
+			"name": "Raşit",
+			"id": "0-Bicv8XIv4"
+		},
+		{
+			"name": "Kübra",
+			"id": "QIEhquamt8Q"
+		},
+		{
+			"name": "Serdar",
+			"id": "BXLDbcrt2Zs"
+		},
+		{
+			"name": "İbrahim",
+			"id": "tDyTTRVXrO4"
+		},
+		{
+			"name": "Berat",
+			"id": "3SFyd72xYXs"
+		},
+		{
+			"name": "Abdullah",
+			"id": "Tq7ad0IY4Fk"
+		}
+	],
+	"$schema": "./node_modules/json-server/schema.json"
 }
