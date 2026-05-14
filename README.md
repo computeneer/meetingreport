@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+# Meeting Reports
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal web application for tracking meeting notes and task assignments. Built with **React 19**, **Vite**, **Tailwind CSS v3**, and **json-server**.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Meetings**: Create, edit, and delete meetings. Each meeting supports multiple notes.
+- **Tasks**: Assign tasks to users linked to specific meetings. Mark tasks as completed.
+- **Users**: Dynamically manage users (add, edit, delete). Users are persisted via `json-server`.
+- **Responsive UI**: Styled with Tailwind CSS using a custom color palette (`#1E104E`, `#452E5A`, `#FF653F`, `#FFC85C`).
+- **Animations**: Smooth UI transitions powered by `motion` (Framer Motion).
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 + TypeScript
+- Vite
+- React Router v7
+- Tailwind CSS v3 + PostCSS + Autoprefixer
+- motion (Framer Motion)
+- json-server (mock backend)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- [Bun](https://bun.sh/) installed (project uses `bun.lock`)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+bun install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running the Project
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+You need to run **two** processes simultaneously: the frontend dev server and the mock backend.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**1. Start the mock API server**
+
+```bash
+bun run server
 ```
+
+This starts `json-server` on `http://localhost:3001` using `db.json`.
+
+**2. Start the Vite dev server**
+
+```bash
+bun run dev
+```
+
+The application will be available at `http://localhost:5173` (or the port Vite assigns).
+
+## Available Scripts
+
+| Script | Description |
+|--------|-------------|
+| `bun run dev` | Start the Vite development server |
+| `bun run build` | Type-check and build for production |
+| `bun run preview` | Preview the production build locally |
+| `bun run lint` | Run ESLint |
+| `bun run server` | Start the json-server mock backend (`http://localhost:3001`) |
+
+## Project Notes
+
+- **Routing**: Real routes are defined in `src/routes/index.tsx` and consumed by `App.tsx`.
+- **Backend**: There is no real backend. Data is stored in `db.json` and served by `json-server`.
+- **Users**: The user list is dynamic. Manage users via the `/users` route instead of editing constants.
+- **TypeScript**: Strict mode is enabled with `noUnusedLocals` and `noUnusedParameters`.
+- **Styling**: Custom theme colors are defined in `tailwind.config.js`.
