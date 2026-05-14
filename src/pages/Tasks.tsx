@@ -38,7 +38,7 @@ export default function Tasks() {
 					setUsers(u);
 				}
 			} catch (err) {
-				console.error("Veriler yüklenemedi:", err);
+				console.error("Failed to load data:", err);
 			} finally {
 				if (!cancelled) setLoading(false);
 			}
@@ -60,7 +60,7 @@ export default function Tasks() {
 			setMeetings(m);
 			setUsers(u);
 		} catch (err) {
-			console.error("Veriler yüklenemedi:", err);
+			console.error("Failed to load data:", err);
 		} finally {
 			setLoading(false);
 		}
@@ -97,7 +97,7 @@ export default function Tasks() {
 			setIsModalOpen(false);
 			await fetchData();
 		} catch (err) {
-			console.error("Kaydetme hatası:", err);
+			console.error("Save error:", err);
 		}
 	};
 
@@ -106,29 +106,29 @@ export default function Tasks() {
 			await taskApi.delete(id);
 			await fetchData();
 		} catch (err) {
-			console.error("Silme hatası:", err);
+			console.error("Delete error:", err);
 		}
 	};
 
 	const getMeetingTitle = (id: string) =>
-		meetings.find((m) => m.id === id)?.title ?? "Bilinmeyen Toplantı";
+		meetings.find((m) => m.id === id)?.title ?? "Unknown Meeting";
 
 	return (
 		<div>
 			<div className="mb-6 flex items-center justify-between">
-				<h1 className="text-2xl font-bold text-primary-dark">Görevler</h1>
+				<h1 className="text-2xl font-bold text-primary-dark">Tasks</h1>
 				<button
 					onClick={openAdd}
 					className="rounded-lg bg-accent-orange px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-orange-600"
 				>
-					+ Yeni Görev
+					+ New Task
 				</button>
 			</div>
 
 			{loading ? (
-				<p className="text-gray-500">Yükleniyor...</p>
+				<p className="text-gray-500">Loading...</p>
 			) : tasks.length === 0 ? (
-				<p className="text-gray-500">Henüz görev eklenmemiş.</p>
+				<p className="text-gray-500">No tasks added yet.</p>
 			) : (
 				<div className="space-y-3">
 					<AnimatePresence>
@@ -177,13 +177,13 @@ export default function Tasks() {
 										onClick={() => openEdit(task)}
 										className="rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-primary-dark"
 									>
-										Düzenle
+										Edit
 									</button>
 									<button
 										onClick={() => setDeleteTarget(task)}
 										className="rounded-md bg-red-500 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-red-600"
 									>
-										Sil
+										Delete
 									</button>
 								</div>
 							</motion.div>
@@ -195,12 +195,12 @@ export default function Tasks() {
 			<Modal
 				isOpen={isModalOpen}
 				onClose={() => setIsModalOpen(false)}
-				title={editing ? "Görevi Düzenle" : "Yeni Görev"}
+				title={editing ? "Edit Task" : "New Task"}
 			>
 				<div className="space-y-4">
 					<div>
 						<label className="mb-1 block text-sm font-medium text-gray-700">
-							Toplantı
+							Meeting
 						</label>
 						<select
 							value={form.meetingId}
@@ -218,7 +218,7 @@ export default function Tasks() {
 					</div>
 					<div>
 						<label className="mb-1 block text-sm font-medium text-gray-700">
-							Sorumlu
+							Assignee
 						</label>
 						<select
 							value={form.assignee}
@@ -236,7 +236,7 @@ export default function Tasks() {
 					</div>
 					<div>
 						<label className="mb-1 block text-sm font-medium text-gray-700">
-							Görev Açıklaması
+							Task Description
 						</label>
 						<input
 							type="text"
@@ -245,7 +245,7 @@ export default function Tasks() {
 								setForm((f) => ({ ...f, description: e.target.value }))
 							}
 							className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-							placeholder="Görev açıklaması"
+							placeholder="Task description"
 						/>
 					</div>
 					<div className="flex items-center gap-2">
@@ -262,7 +262,7 @@ export default function Tasks() {
 							htmlFor="task-completed"
 							className="text-sm text-gray-700"
 						>
-							Tamamlandı
+							Completed
 						</label>
 					</div>
 					<div className="flex justify-end gap-3 pt-2">
@@ -270,13 +270,13 @@ export default function Tasks() {
 							onClick={() => setIsModalOpen(false)}
 							className="rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-300"
 						>
-							İptal
+							Cancel
 						</button>
 						<button
 							onClick={handleSave}
 							className="rounded-lg bg-accent-orange px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-orange-600"
 						>
-							Kaydet
+							Save
 						</button>
 					</div>
 				</div>
@@ -288,10 +288,10 @@ export default function Tasks() {
 				onConfirm={() => {
 					if (deleteTarget) handleDelete(deleteTarget.id);
 				}}
-				title="Görevi Sil"
-				message={`Bu görevi silmek istediğinize emin misiniz?`}
-				confirmText="Sil"
-				cancelText="İptal"
+				title="Delete Task"
+				message={`Are you sure you want to delete this task?`}
+				confirmText="Delete"
+				cancelText="Cancel"
 			/>
 		</div>
 	);

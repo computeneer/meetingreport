@@ -15,7 +15,7 @@ export default function Home() {
 				setMeetings(m);
 				setTasks(t);
 			} catch (err) {
-				console.error("Veriler yüklenemedi:", err);
+				console.error("Failed to load data:", err);
 			} finally {
 				setLoading(false);
 			}
@@ -28,14 +28,14 @@ export default function Home() {
 	return (
 		<div>
 			<h1 className="mb-6 text-2xl font-bold text-primary-dark">
-				Ana Sayfa
+				Home
 			</h1>
 
 			{loading ? (
-				<p className="text-gray-500">Yükleniyor...</p>
+				<p className="text-gray-500">Loading...</p>
 			) : meetings.length === 0 ? (
 				<p className="text-gray-500">
-					Henüz toplantı veya görev eklenmemiş.
+					No meetings or tasks added yet.
 				</p>
 			) : (
 				<div className="space-y-6">
@@ -84,7 +84,7 @@ export default function Home() {
 									</ul>
 								) : (
 									<p className="text-sm text-gray-400">
-										Bu toplantıya atanmış görev yok.
+										No tasks assigned to this meeting.
 									</p>
 								)}
 							</motion.div>

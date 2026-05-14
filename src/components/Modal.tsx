@@ -51,7 +51,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
 							<button
 								onClick={onClose}
 								className="text-2xl leading-none text-gray-400 transition-colors hover:text-gray-600"
-								aria-label="Kapat"
+								aria-label="Close"
 							>
 								&times;
 							</button>

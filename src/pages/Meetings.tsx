@@ -27,7 +27,7 @@ export default function Meetings() {
 				const data = await meetingApi.list();
 				if (!cancelled) setMeetings(data);
 			} catch (err) {
-				console.error("Toplantılar yüklenemedi:", err);
+				console.error("Failed to load meetings:", err);
 			} finally {
 				if (!cancelled) setLoading(false);
 			}
@@ -43,7 +43,7 @@ export default function Meetings() {
 			const data = await meetingApi.list();
 			setMeetings(data);
 		} catch (err) {
-			console.error("Toplantılar yüklenemedi:", err);
+			console.error("Failed to load meetings:", err);
 		} finally {
 			setLoading(false);
 		}
@@ -72,7 +72,7 @@ export default function Meetings() {
 			setIsModalOpen(false);
 			await fetchMeetings();
 		} catch (err) {
-			console.error("Kaydetme hatası:", err);
+			console.error("Save error:", err);
 		}
 	};
 
@@ -81,7 +81,7 @@ export default function Meetings() {
 			await meetingApi.delete(id);
 			await fetchMeetings();
 		} catch (err) {
-			console.error("Silme hatası:", err);
+			console.error("Delete error:", err);
 		}
 	};
 
@@ -107,19 +107,19 @@ export default function Meetings() {
 	return (
 		<div>
 			<div className="mb-6 flex items-center justify-between">
-				<h1 className="text-2xl font-bold text-primary-dark">Toplantılar</h1>
+				<h1 className="text-2xl font-bold text-primary-dark">Meetings</h1>
 				<button
 					onClick={openAdd}
 					className="rounded-lg bg-accent-orange px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-orange-600"
 				>
-					+ Yeni Toplantı
+					+ New Meeting
 				</button>
 			</div>
 
 			{loading ? (
-				<p className="text-gray-500">Yükleniyor...</p>
+				<p className="text-gray-500">Loading...</p>
 			) : meetings.length === 0 ? (
-				<p className="text-gray-500">Henüz toplantı eklenmemiş.</p>
+				<p className="text-gray-500">No meetings added yet.</p>
 			) : (
 				<div className="grid gap-4 md:grid-cols-2">
 					<AnimatePresence>
@@ -152,13 +152,13 @@ export default function Meetings() {
 										onClick={() => openEdit(m)}
 										className="rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-primary-dark"
 									>
-										Düzenle
+										Edit
 									</button>
 									<button
 										onClick={() => setDeleteTarget(m)}
 										className="rounded-md bg-red-500 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-red-600"
 									>
-										Sil
+										Delete
 									</button>
 								</div>
 							</motion.div>
@@ -170,12 +170,12 @@ export default function Meetings() {
 			<Modal
 				isOpen={isModalOpen}
 				onClose={() => setIsModalOpen(false)}
-				title={editing ? "Toplantıyı Düzenle" : "Yeni Toplantı"}
+				title={editing ? "Edit Meeting" : "New Meeting"}
 			>
 				<div className="space-y-4">
 					<div>
 						<label className="mb-1 block text-sm font-medium text-gray-700">
-							Başlık
+							Title
 						</label>
 						<input
 							type="text"
@@ -184,12 +184,12 @@ export default function Meetings() {
 								setForm((f) => ({ ...f, title: e.target.value }))
 							}
 							className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-							placeholder="Toplantı başlığı"
+							placeholder="Meeting title"
 						/>
 					</div>
 					<div>
 						<label className="mb-1 block text-sm font-medium text-gray-700">
-							Tarih
+							Date
 						</label>
 						<input
 							type="date"
@@ -203,14 +203,14 @@ export default function Meetings() {
 					<div>
 						<div className="mb-1 flex items-center justify-between">
 							<label className="block text-sm font-medium text-gray-700">
-								Notlar
+								Notes
 							</label>
 							<button
 								onClick={addNote}
 								type="button"
 								className="rounded-md bg-accent-yellow px-2 py-1 text-xs font-medium text-primary-dark transition-colors hover:bg-yellow-400"
 							>
-								+ Not Ekle
+								+ Add Note
 							</button>
 						</div>
 						<div className="space-y-2">
@@ -221,14 +221,14 @@ export default function Meetings() {
 										onChange={(e) => updateNote(idx, e.target.value)}
 										rows={2}
 										className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-										placeholder={`Not ${idx + 1}`}
+										placeholder={`Note ${idx + 1}`}
 									/>
 									<button
 										onClick={() => removeNote(idx)}
 										type="button"
 										className="self-start rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-600 transition-colors hover:bg-red-200"
 									>
-										Kaldır
+										Remove
 									</button>
 								</div>
 							))}
@@ -239,13 +239,13 @@ export default function Meetings() {
 							onClick={() => setIsModalOpen(false)}
 							className="rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-300"
 						>
-							İptal
+							Cancel
 						</button>
 						<button
 							onClick={handleSave}
 							className="rounded-lg bg-accent-orange px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-orange-600"
 						>
-							Kaydet
+							Save
 						</button>
 					</div>
 				</div>
@@ -257,10 +257,10 @@ export default function Meetings() {
 				onConfirm={() => {
 					if (deleteTarget) handleDelete(deleteTarget.id);
 				}}
-				title="Toplantıyı Sil"
-				message={`"${deleteTarget?.title}" toplantısını silmek istediğinize emin misiniz?`}
-				confirmText="Sil"
-				cancelText="İptal"
+				title="Delete Meeting"
+				message={`Are you sure you want to delete the meeting "${deleteTarget?.title}"?`}
+				confirmText="Delete"
+				cancelText="Cancel"
 			/>
 		</div>
 	);

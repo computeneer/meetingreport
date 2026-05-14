@@ -14,10 +14,10 @@ export function ConfirmModal({
 	isOpen,
 	onClose,
 	onConfirm,
-	title = "Onay",
+	title = "Confirm",
 	message,
-	confirmText = "Sil",
-	cancelText = "İptal",
+	confirmText = "Delete",
+	cancelText = "Cancel",
 }: ConfirmModalProps) {
 	return (
 		<Modal isOpen={isOpen} onClose={onClose} title={title}>

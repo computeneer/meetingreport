@@ -1,20 +1,20 @@
-# Projenin amacı
+# Project Purpose
 
-- Toplantılarda alınan notların kaydedilmesi.
-- Toplantıda kimlere hangi task atandı onların not alınması.
+- Recording notes taken during meetings.
+- Recording which tasks were assigned to whom during meetings.
 
-## Projedeki sayfalar
+## Project Pages
 
-- Home: Mevcut toplantıların ve kimlere hangi task atandı bilgilerinin listelenmesi
-- Meetings: Mevcut toplantıların listelenmesi, yeni toplantı eklenmesi, düzenlenmesi ve silinmesi (silerken bir onay modalı çıkmalı).
-- Tasks : Kimlere hangi tasklar atandı bunların listelenmesi ("Ahmet: Database migration işlemlerini yapılması" tarzında), yeni task atamalarının yapılması (statik bir listeden select ile seçim yapılacak, task textbox üzerinden girilecek). Atamaların düzenlenmesi ve silinmesi.
+- Home: Lists existing meetings and the tasks assigned to each person.
+- Meetings: Lists existing meetings, allows adding new meetings, editing and deleting them (a confirmation modal should appear when deleting).
+- Tasks: Lists assigned tasks (e.g. "Ahmet: Perform database migration"), allows creating new task assignments (selected from a dynamic list via a select element, task entered via a text box). Editing and deleting assignments.
 
-## Projenin mimarisi
+## Project Architecture
 
-- Mümkün olduğunda temiz bir mimari kullanılması gerekiyor. Tekrar kullanılabilir componentlerin reusable olarak yazılması önemli.
-- Mümkün olduğunca minimal bir sistem istiyoruz. Backend yazılmayacak bunun yerine json-server kullanılacak.
+- A clean architecture should be used as much as possible. Writing reusable components is important.
+- We want the system to be as minimal as possible. No backend will be written; instead, json-server will be used.
 
-## Arayüz
+## UI
 
-- Tailwindcss ve motion kullanılarak modern bir arayüz.
-- Renk paleti olarak : #1E104E, #452E5A, #FF653F, #FFC85C kullanmayı planlıyoruz.
+- Modern interface using Tailwind CSS and motion.
+- Planned color palette: #1E104E, #452E5A, #FF653F, #FFC85C.

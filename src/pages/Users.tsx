@@ -25,7 +25,7 @@ export default function Users() {
 				const data = await userApi.list();
 				if (!cancelled) setUsers(data);
 			} catch (err) {
-				console.error("Kullanıcılar yüklenemedi:", err);
+				console.error("Failed to load users:", err);
 			} finally {
 				if (!cancelled) setLoading(false);
 			}
@@ -41,7 +41,7 @@ export default function Users() {
 			const data = await userApi.list();
 			setUsers(data);
 		} catch (err) {
-			console.error("Kullanıcılar yüklenemedi:", err);
+			console.error("Failed to load users:", err);
 		} finally {
 			setLoading(false);
 		}
@@ -69,7 +69,7 @@ export default function Users() {
 			setIsModalOpen(false);
 			await fetchUsers();
 		} catch (err) {
-			console.error("Kaydetme hatası:", err);
+			console.error("Save error:", err);
 		}
 	};
 
@@ -78,26 +78,26 @@ export default function Users() {
 			await userApi.delete(id);
 			await fetchUsers();
 		} catch (err) {
-			console.error("Silme hatası:", err);
+			console.error("Delete error:", err);
 		}
 	};
 
 	return (
 		<div>
 			<div className="mb-6 flex items-center justify-between">
-				<h1 className="text-2xl font-bold text-primary-dark">Kullanıcılar</h1>
+				<h1 className="text-2xl font-bold text-primary-dark">Users</h1>
 				<button
 					onClick={openAdd}
 					className="rounded-lg bg-accent-orange px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-orange-600"
 				>
-					+ Yeni Kullanıcı
+					+ New User
 				</button>
 			</div>
 
 			{loading ? (
-				<p className="text-gray-500">Yükleniyor...</p>
+				<p className="text-gray-500">Loading...</p>
 			) : users.length === 0 ? (
-				<p className="text-gray-500">Henüz kullanıcı eklenmemiş.</p>
+				<p className="text-gray-500">No users added yet.</p>
 			) : (
 				<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					<AnimatePresence>
@@ -118,13 +118,13 @@ export default function Users() {
 										onClick={() => openEdit(u)}
 										className="rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-primary-dark"
 									>
-										Düzenle
+										Edit
 									</button>
 									<button
 										onClick={() => setDeleteTarget(u)}
 										className="rounded-md bg-red-500 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-red-600"
 									>
-										Sil
+										Delete
 									</button>
 								</div>
 							</motion.div>
@@ -136,12 +136,12 @@ export default function Users() {
 			<Modal
 				isOpen={isModalOpen}
 				onClose={() => setIsModalOpen(false)}
-				title={editing ? "Kullanıcıyı Düzenle" : "Yeni Kullanıcı"}
+				title={editing ? "Edit User" : "New User"}
 			>
 				<div className="space-y-4">
 					<div>
 						<label className="mb-1 block text-sm font-medium text-gray-700">
-							İsim
+							Name
 						</label>
 						<input
 							type="text"
@@ -150,7 +150,7 @@ export default function Users() {
 								setForm((f) => ({ ...f, name: e.target.value }))
 							}
 							className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-							placeholder="Kullanıcı adı"
+							placeholder="User name"
 						/>
 					</div>
 					<div className="flex justify-end gap-3 pt-2">
@@ -158,13 +158,13 @@ export default function Users() {
 							onClick={() => setIsModalOpen(false)}
 							className="rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-300"
 						>
-							İptal
+							Cancel
 						</button>
 						<button
 							onClick={handleSave}
 							className="rounded-lg bg-accent-orange px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-orange-600"
 						>
-							Kaydet
+							Save
 						</button>
 					</div>
 				</div>
@@ -176,10 +176,10 @@ export default function Users() {
 				onConfirm={() => {
 					if (deleteTarget) handleDelete(deleteTarget.id);
 				}}
-				title="Kullanıcıyı Sil"
-				message={`"${deleteTarget?.name}" kullanıcısını silmek istediğinize emin misiniz?`}
-				confirmText="Sil"
-				cancelText="İptal"
+				title="Delete User"
+				message={`Are you sure you want to delete the user "${deleteTarget?.name}"?`}
+				confirmText="Delete"
+				cancelText="Cancel"
 			/>
 		</div>
 	);

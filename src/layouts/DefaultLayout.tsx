@@ -13,22 +13,22 @@ export default function DefaultLayout() {
 			<header className="bg-primary-dark shadow-lg">
 				<div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
 					<h1 className="text-xl font-bold text-accent-yellow">
-						Toplantı Raporları
+						Meeting Reports
 					</h1>
 					<nav className="flex gap-2">
 						<NavLink to="/" end className={linkClass}>
-							Ana Sayfa
+							Home
 						</NavLink>
 						<NavLink to="/meetings" className={linkClass}>
-							Toplantılar
+							Meetings
 						</NavLink>
-					<NavLink to="/tasks" className={linkClass}>
-						Görevler
-					</NavLink>
-					<NavLink to="/users" className={linkClass}>
-						Kullanıcılar
-					</NavLink>
-				</nav>
+						<NavLink to="/tasks" className={linkClass}>
+							Tasks
+						</NavLink>
+						<NavLink to="/users" className={linkClass}>
+							Users
+						</NavLink>
+					</nav>
 				</div>
 			</header>
 			<main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8">
