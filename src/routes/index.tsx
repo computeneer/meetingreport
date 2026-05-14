@@ -3,6 +3,7 @@ import DefaultLayout from "../layouts/DefaultLayout";
 import HomePage from "../pages/Home";
 import MeetingsPage from "../pages/Meetings";
 import TasksPage from "../pages/Tasks";
+import UsersPage from "../pages/Users";
 
 const routes: RouteObject[] = [
 	{
@@ -20,6 +21,10 @@ const routes: RouteObject[] = [
 			{
 				path: "/tasks",
 				element: <TasksPage />,
+			},
+			{
+				path: "/users",
+				element: <UsersPage />,
 			},
 		],
 	},
