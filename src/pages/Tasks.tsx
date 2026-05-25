@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useTranslation } from "react-i18next";
 import { taskApi, meetingApi, userApi } from "../lib/api";
 import { Modal } from "../components/Modal";
 import { ConfirmModal } from "../components/ConfirmModal";
@@ -13,6 +14,7 @@ const emptyTask: Omit<Task, "id"> = {
 };
 
 export default function Tasks() {
+	const { t } = useTranslation();
 	const [tasks, setTasks] = useState<Task[]>([]);
 	const [meetings, setMeetings] = useState<Meeting[]>([]);
 	const [users, setUsers] = useState<User[]>([]);
@@ -111,24 +113,24 @@ export default function Tasks() {
 	};
 
 	const getMeetingTitle = (id: string) =>
-		meetings.find((m) => m.id === id)?.title ?? "Unknown Meeting";
+		meetings.find((m) => m.id === id)?.title ?? t("tasks.unknownMeeting");
 
 	return (
 		<div>
 			<div className="mb-6 flex items-center justify-between">
-				<h1 className="text-2xl font-bold text-primary-dark">Tasks</h1>
+				<h1 className="text-2xl font-bold text-primary-dark">{t("tasks.title")}</h1>
 				<button
 					onClick={openAdd}
 					className="rounded-lg bg-accent-orange px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-orange-600"
 				>
-					+ New Task
+					{t("tasks.newTask")}
 				</button>
 			</div>
 
 			{loading ? (
-				<p className="text-gray-500">Loading...</p>
+				<p className="text-gray-500">{t("common.loading")}</p>
 			) : tasks.length === 0 ? (
-				<p className="text-gray-500">No tasks added yet.</p>
+				<p className="text-gray-500">{t("tasks.noTasks")}</p>
 			) : (
 				<div className="space-y-3">
 					<AnimatePresence>
@@ -177,13 +179,13 @@ export default function Tasks() {
 										onClick={() => openEdit(task)}
 										className="rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-primary-dark"
 									>
-										Edit
+										{t("common.edit")}
 									</button>
 									<button
 										onClick={() => setDeleteTarget(task)}
 										className="rounded-md bg-red-500 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-red-600"
 									>
-										Delete
+										{t("common.delete")}
 									</button>
 								</div>
 							</motion.div>
@@ -195,12 +197,12 @@ export default function Tasks() {
 			<Modal
 				isOpen={isModalOpen}
 				onClose={() => setIsModalOpen(false)}
-				title={editing ? "Edit Task" : "New Task"}
+				title={editing ? t("tasks.editTask") : t("tasks.newTaskModal")}
 			>
 				<div className="space-y-4">
 					<div>
 						<label className="mb-1 block text-sm font-medium text-gray-700">
-							Meeting
+							{t("common.meeting")}
 						</label>
 						<select
 							value={form.meetingId}
@@ -218,7 +220,7 @@ export default function Tasks() {
 					</div>
 					<div>
 						<label className="mb-1 block text-sm font-medium text-gray-700">
-							Assignee
+							{t("common.assignee")}
 						</label>
 						<select
 							value={form.assignee}
@@ -236,7 +238,7 @@ export default function Tasks() {
 					</div>
 					<div>
 						<label className="mb-1 block text-sm font-medium text-gray-700">
-							Task Description
+							{t("common.description")}
 						</label>
 						<input
 							type="text"
@@ -245,7 +247,7 @@ export default function Tasks() {
 								setForm((f) => ({ ...f, description: e.target.value }))
 							}
 							className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-							placeholder="Task description"
+							placeholder={t("tasks.placeholderDescription")}
 						/>
 					</div>
 					<div className="flex items-center gap-2">
@@ -262,7 +264,7 @@ export default function Tasks() {
 							htmlFor="task-completed"
 							className="text-sm text-gray-700"
 						>
-							Completed
+							{t("common.completed")}
 						</label>
 					</div>
 					<div className="flex justify-end gap-3 pt-2">
@@ -270,13 +272,13 @@ export default function Tasks() {
 							onClick={() => setIsModalOpen(false)}
 							className="rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-300"
 						>
-							Cancel
+							{t("common.cancel")}
 						</button>
 						<button
 							onClick={handleSave}
 							className="rounded-lg bg-accent-orange px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-orange-600"
 						>
-							Save
+							{t("common.save")}
 						</button>
 					</div>
 				</div>
@@ -288,10 +290,10 @@ export default function Tasks() {
 				onConfirm={() => {
 					if (deleteTarget) handleDelete(deleteTarget.id);
 				}}
-				title="Delete Task"
-				message={`Are you sure you want to delete this task?`}
-				confirmText="Delete"
-				cancelText="Cancel"
+				title={t("tasks.deleteTitle")}
+				message={t("tasks.deleteConfirm")}
+				confirmText={t("common.delete")}
+				cancelText={t("common.cancel")}
 			/>
 		</div>
 	);

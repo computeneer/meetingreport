@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useTranslation } from "react-i18next";
 import { meetingApi } from "../lib/api";
 import { Modal } from "../components/Modal";
 import { ConfirmModal } from "../components/ConfirmModal";
@@ -12,6 +13,7 @@ const emptyMeeting: Omit<Meeting, "id"> = {
 };
 
 export default function Meetings() {
+	const { t } = useTranslation();
 	const [meetings, setMeetings] = useState<Meeting[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -107,19 +109,19 @@ export default function Meetings() {
 	return (
 		<div>
 			<div className="mb-6 flex items-center justify-between">
-				<h1 className="text-2xl font-bold text-primary-dark">Meetings</h1>
+				<h1 className="text-2xl font-bold text-primary-dark">{t("meetings.title")}</h1>
 				<button
 					onClick={openAdd}
 					className="rounded-lg bg-accent-orange px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-orange-600"
 				>
-					+ New Meeting
+					{t("meetings.newMeeting")}
 				</button>
 			</div>
 
 			{loading ? (
-				<p className="text-gray-500">Loading...</p>
+				<p className="text-gray-500">{t("common.loading")}</p>
 			) : meetings.length === 0 ? (
-				<p className="text-gray-500">No meetings added yet.</p>
+				<p className="text-gray-500">{t("meetings.noMeetings")}</p>
 			) : (
 				<div className="grid gap-4 md:grid-cols-2">
 					<AnimatePresence>
@@ -152,13 +154,13 @@ export default function Meetings() {
 										onClick={() => openEdit(m)}
 										className="rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-primary-dark"
 									>
-										Edit
+										{t("common.edit")}
 									</button>
 									<button
 										onClick={() => setDeleteTarget(m)}
 										className="rounded-md bg-red-500 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-red-600"
 									>
-										Delete
+										{t("common.delete")}
 									</button>
 								</div>
 							</motion.div>
@@ -170,12 +172,12 @@ export default function Meetings() {
 			<Modal
 				isOpen={isModalOpen}
 				onClose={() => setIsModalOpen(false)}
-				title={editing ? "Edit Meeting" : "New Meeting"}
+				title={editing ? t("meetings.editMeeting") : t("meetings.newMeetingModal")}
 			>
 				<div className="space-y-4">
 					<div>
 						<label className="mb-1 block text-sm font-medium text-gray-700">
-							Title
+							{t("common.title")}
 						</label>
 						<input
 							type="text"
@@ -184,12 +186,12 @@ export default function Meetings() {
 								setForm((f) => ({ ...f, title: e.target.value }))
 							}
 							className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-							placeholder="Meeting title"
+							placeholder={t("meetings.placeholderTitle")}
 						/>
 					</div>
 					<div>
 						<label className="mb-1 block text-sm font-medium text-gray-700">
-							Date
+							{t("common.date")}
 						</label>
 						<input
 							type="date"
@@ -203,14 +205,14 @@ export default function Meetings() {
 					<div>
 						<div className="mb-1 flex items-center justify-between">
 							<label className="block text-sm font-medium text-gray-700">
-								Notes
+								{t("common.notes")}
 							</label>
 							<button
 								onClick={addNote}
 								type="button"
 								className="rounded-md bg-accent-yellow px-2 py-1 text-xs font-medium text-primary-dark transition-colors hover:bg-yellow-400"
 							>
-								+ Add Note
+								{t("common.addNote")}
 							</button>
 						</div>
 						<div className="space-y-2">
@@ -221,14 +223,14 @@ export default function Meetings() {
 										onChange={(e) => updateNote(idx, e.target.value)}
 										rows={2}
 										className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-										placeholder={`Note ${idx + 1}`}
+										placeholder={`${t("common.notes")} ${idx + 1}`}
 									/>
 									<button
 										onClick={() => removeNote(idx)}
 										type="button"
 										className="self-start rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-600 transition-colors hover:bg-red-200"
 									>
-										Remove
+										{t("common.remove")}
 									</button>
 								</div>
 							))}
@@ -239,13 +241,13 @@ export default function Meetings() {
 							onClick={() => setIsModalOpen(false)}
 							className="rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-300"
 						>
-							Cancel
+							{t("common.cancel")}
 						</button>
 						<button
 							onClick={handleSave}
 							className="rounded-lg bg-accent-orange px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-orange-600"
 						>
-							Save
+							{t("common.save")}
 						</button>
 					</div>
 				</div>
@@ -257,10 +259,10 @@ export default function Meetings() {
 				onConfirm={() => {
 					if (deleteTarget) handleDelete(deleteTarget.id);
 				}}
-				title="Delete Meeting"
-				message={`Are you sure you want to delete the meeting "${deleteTarget?.title}"?`}
-				confirmText="Delete"
-				cancelText="Cancel"
+				title={t("meetings.deleteTitle")}
+				message={t("meetings.deleteConfirm", { title: deleteTarget?.title })}
+				confirmText={t("common.delete")}
+				cancelText={t("common.cancel")}
 			/>
 		</div>
 	);

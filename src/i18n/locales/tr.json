@@ -1,0 +1,71 @@
+{
+  "common": {
+    "loading": "Yükleniyor...",
+    "cancel": "İptal",
+    "save": "Kaydet",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "add": "Ekle",
+    "close": "Kapat",
+    "confirm": "Onayla",
+    "title": "Başlık",
+    "name": "İsim",
+    "date": "Tarih",
+    "notes": "Notlar",
+    "addNote": "+ Not Ekle",
+    "remove": "Kaldır",
+    "description": "Görev Açıklaması",
+    "completed": "Tamamlandı",
+    "meeting": "Toplantı",
+    "assignee": "Sorumlu",
+    "yes": "Evet",
+    "no": "Hayır"
+  },
+  "nav": {
+    "home": "Ana Sayfa",
+    "meetings": "Toplantılar",
+    "tasks": "Görevler",
+    "users": "Kullanıcılar",
+    "appTitle": "Toplantı Raporları"
+  },
+  "home": {
+    "title": "Ana Sayfa",
+    "noData": "Henüz toplantı veya görev eklenmemiş.",
+    "noTasks": "Bu toplantıya atanmış görev yok."
+  },
+  "meetings": {
+    "title": "Toplantılar",
+    "newMeeting": "+ Yeni Toplantı",
+    "editMeeting": "Toplantıyı Düzenle",
+    "newMeetingModal": "Yeni Toplantı",
+    "noMeetings": "Henüz toplantı eklenmemiş.",
+    "deleteTitle": "Toplantıyı Sil",
+    "deleteConfirm": "\"{{title}}\" toplantısını silmek istediğinize emin misiniz?",
+    "placeholderTitle": "Toplantı başlığı"
+  },
+  "tasks": {
+    "title": "Görevler",
+    "newTask": "+ Yeni Görev",
+    "editTask": "Görevi Düzenle",
+    "newTaskModal": "Yeni Görev",
+    "noTasks": "Henüz görev eklenmemiş.",
+    "deleteTitle": "Görevi Sil",
+    "deleteConfirm": "Bu görevi silmek istediğinize emin misiniz?",
+    "unknownMeeting": "Bilinmeyen Toplantı",
+    "placeholderDescription": "Görev açıklaması"
+  },
+  "users": {
+    "title": "Kullanıcılar",
+    "newUser": "+ Yeni Kullanıcı",
+    "editUser": "Kullanıcıyı Düzenle",
+    "newUserModal": "Yeni Kullanıcı",
+    "noUsers": "Henüz kullanıcı eklenmemiş.",
+    "deleteTitle": "Kullanıcıyı Sil",
+    "deleteConfirm": "\"{{name}}\" kullanıcısını silmek istediğinize emin misiniz?",
+    "placeholderName": "Kullanıcı adı"
+  },
+  "language": {
+    "tr": "Türkçe",
+    "en": "English"
+  }
+}

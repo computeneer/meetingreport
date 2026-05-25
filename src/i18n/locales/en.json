@@ -1,0 +1,71 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "close": "Close",
+    "confirm": "Confirm",
+    "title": "Title",
+    "name": "Name",
+    "date": "Date",
+    "notes": "Notes",
+    "addNote": "+ Add Note",
+    "remove": "Remove",
+    "description": "Task Description",
+    "completed": "Completed",
+    "meeting": "Meeting",
+    "assignee": "Assignee",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "nav": {
+    "home": "Home",
+    "meetings": "Meetings",
+    "tasks": "Tasks",
+    "users": "Users",
+    "appTitle": "Meeting Reports"
+  },
+  "home": {
+    "title": "Home",
+    "noData": "No meetings or tasks added yet.",
+    "noTasks": "No tasks assigned to this meeting."
+  },
+  "meetings": {
+    "title": "Meetings",
+    "newMeeting": "+ New Meeting",
+    "editMeeting": "Edit Meeting",
+    "newMeetingModal": "New Meeting",
+    "noMeetings": "No meetings added yet.",
+    "deleteTitle": "Delete Meeting",
+    "deleteConfirm": "Are you sure you want to delete the meeting \"{{title}}\"?",
+    "placeholderTitle": "Meeting title"
+  },
+  "tasks": {
+    "title": "Tasks",
+    "newTask": "+ New Task",
+    "editTask": "Edit Task",
+    "newTaskModal": "New Task",
+    "noTasks": "No tasks added yet.",
+    "deleteTitle": "Delete Task",
+    "deleteConfirm": "Are you sure you want to delete this task?",
+    "unknownMeeting": "Unknown Meeting",
+    "placeholderDescription": "Task description"
+  },
+  "users": {
+    "title": "Users",
+    "newUser": "+ New User",
+    "editUser": "Edit User",
+    "newUserModal": "New User",
+    "noUsers": "No users added yet.",
+    "deleteTitle": "Delete User",
+    "deleteConfirm": "Are you sure you want to delete the user \"{{name}}\"?",
+    "placeholderName": "User name"
+  },
+  "language": {
+    "tr": "Türkçe",
+    "en": "English"
+  }
+}

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 import { meetingApi, taskApi } from "../lib/api";
 import type { Meeting, Task } from "../types";
 
 export default function Home() {
+	const { t } = useTranslation();
 	const [meetings, setMeetings] = useState<Meeting[]>([]);
 	const [tasks, setTasks] = useState<Task[]>([]);
 	const [loading, setLoading] = useState(true);
@@ -28,14 +30,14 @@ export default function Home() {
 	return (
 		<div>
 			<h1 className="mb-6 text-2xl font-bold text-primary-dark">
-				Home
+				{t("home.title")}
 			</h1>
 
 			{loading ? (
-				<p className="text-gray-500">Loading...</p>
+				<p className="text-gray-500">{t("common.loading")}</p>
 			) : meetings.length === 0 ? (
 				<p className="text-gray-500">
-					No meetings or tasks added yet.
+					{t("home.noData")}
 				</p>
 			) : (
 				<div className="space-y-6">
@@ -84,7 +86,7 @@ export default function Home() {
 									</ul>
 								) : (
 									<p className="text-sm text-gray-400">
-										No tasks assigned to this meeting.
+										{t("home.noTasks")}
 									</p>
 								)}
 							</motion.div>

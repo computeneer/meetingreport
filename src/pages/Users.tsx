@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useTranslation } from "react-i18next";
 import { userApi } from "../lib/api";
 import { Modal } from "../components/Modal";
 import { ConfirmModal } from "../components/ConfirmModal";
@@ -10,6 +11,7 @@ const emptyUser: Omit<User, "id"> = {
 };
 
 export default function Users() {
+	const { t } = useTranslation();
 	const [users, setUsers] = useState<User[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -85,19 +87,19 @@ export default function Users() {
 	return (
 		<div>
 			<div className="mb-6 flex items-center justify-between">
-				<h1 className="text-2xl font-bold text-primary-dark">Users</h1>
+				<h1 className="text-2xl font-bold text-primary-dark">{t("users.title")}</h1>
 				<button
 					onClick={openAdd}
 					className="rounded-lg bg-accent-orange px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-orange-600"
 				>
-					+ New User
+					{t("users.newUser")}
 				</button>
 			</div>
 
 			{loading ? (
-				<p className="text-gray-500">Loading...</p>
+				<p className="text-gray-500">{t("common.loading")}</p>
 			) : users.length === 0 ? (
-				<p className="text-gray-500">No users added yet.</p>
+				<p className="text-gray-500">{t("users.noUsers")}</p>
 			) : (
 				<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					<AnimatePresence>
@@ -118,13 +120,13 @@ export default function Users() {
 										onClick={() => openEdit(u)}
 										className="rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-primary-dark"
 									>
-										Edit
+										{t("common.edit")}
 									</button>
 									<button
 										onClick={() => setDeleteTarget(u)}
 										className="rounded-md bg-red-500 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-red-600"
 									>
-										Delete
+										{t("common.delete")}
 									</button>
 								</div>
 							</motion.div>
@@ -136,12 +138,12 @@ export default function Users() {
 			<Modal
 				isOpen={isModalOpen}
 				onClose={() => setIsModalOpen(false)}
-				title={editing ? "Edit User" : "New User"}
+				title={editing ? t("users.editUser") : t("users.newUserModal")}
 			>
 				<div className="space-y-4">
 					<div>
 						<label className="mb-1 block text-sm font-medium text-gray-700">
-							Name
+							{t("common.name")}
 						</label>
 						<input
 							type="text"
@@ -150,7 +152,7 @@ export default function Users() {
 								setForm((f) => ({ ...f, name: e.target.value }))
 							}
 							className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-							placeholder="User name"
+							placeholder={t("users.placeholderName")}
 						/>
 					</div>
 					<div className="flex justify-end gap-3 pt-2">
@@ -158,13 +160,13 @@ export default function Users() {
 							onClick={() => setIsModalOpen(false)}
 							className="rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-300"
 						>
-							Cancel
+							{t("common.cancel")}
 						</button>
 						<button
 							onClick={handleSave}
 							className="rounded-lg bg-accent-orange px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-orange-600"
 						>
-							Save
+							{t("common.save")}
 						</button>
 					</div>
 				</div>
@@ -176,10 +178,10 @@ export default function Users() {
 				onConfirm={() => {
 					if (deleteTarget) handleDelete(deleteTarget.id);
 				}}
-				title="Delete User"
-				message={`Are you sure you want to delete the user "${deleteTarget?.name}"?`}
-				confirmText="Delete"
-				cancelText="Cancel"
+				title={t("users.deleteTitle")}
+				message={t("users.deleteConfirm", { name: deleteTarget?.name })}
+				confirmText={t("common.delete")}
+				cancelText={t("common.cancel")}
 			/>
 		</div>
 	);

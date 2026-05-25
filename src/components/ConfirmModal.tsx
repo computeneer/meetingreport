@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Modal } from "./Modal";
 
 interface ConfirmModalProps {
@@ -14,20 +15,21 @@ export function ConfirmModal({
 	isOpen,
 	onClose,
 	onConfirm,
-	title = "Confirm",
+	title,
 	message,
-	confirmText = "Delete",
-	cancelText = "Cancel",
+	confirmText,
+	cancelText,
 }: ConfirmModalProps) {
+	const { t } = useTranslation();
 	return (
-		<Modal isOpen={isOpen} onClose={onClose} title={title}>
+		<Modal isOpen={isOpen} onClose={onClose} title={title ?? t("common.confirm")}>
 			<p className="mb-6 text-gray-700">{message}</p>
 			<div className="flex justify-end gap-3">
 				<button
 					onClick={onClose}
 					className="rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-300"
 				>
-					{cancelText}
+					{cancelText ?? t("common.cancel")}
 				</button>
 				<button
 					onClick={() => {
@@ -36,7 +38,7 @@ export function ConfirmModal({
 					}}
 					className="rounded-lg bg-accent-orange px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-orange-600"
 				>
-					{confirmText}
+					{confirmText ?? t("common.delete")}
 				</button>
 			</div>
 		</Modal>

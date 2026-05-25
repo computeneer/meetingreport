@@ -1,55 +1,228 @@
 {
-	"meetings": [],
-	"tasks": [],
-	"users": [
-		{
-			"name": "Zafer",
-			"id": "dEECPyJIkEM"
-		},
-		{
-			"name": "Ayşe",
-			"id": "dDFi7oLzpUk"
-		},
-		{
-			"name": "Üzeyr",
-			"id": "aYCxg6VDHNM"
-		},
-		{
-			"name": "Merve",
-			"id": "yDA94XhfiL8"
-		},
-		{
-			"name": "Melissa",
-			"id": "vH05oP6LrLA"
-		},
-		{
-			"name": "Akın",
-			"id": "keA0ibgniLc"
-		},
-		{
-			"name": "Raşit",
-			"id": "0-Bicv8XIv4"
-		},
-		{
-			"name": "Kübra",
-			"id": "QIEhquamt8Q"
-		},
-		{
-			"name": "Serdar",
-			"id": "BXLDbcrt2Zs"
-		},
-		{
-			"name": "İbrahim",
-			"id": "tDyTTRVXrO4"
-		},
-		{
-			"name": "Berat",
-			"id": "3SFyd72xYXs"
-		},
-		{
-			"name": "Abdullah",
-			"id": "Tq7ad0IY4Fk"
-		}
-	],
-	"$schema": "./node_modules/json-server/schema.json"
+  "meetings": [
+    {
+      "title": "Toplantı 1",
+      "date": "2025-02-25",
+      "notes": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. \nSed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. \nNam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \nNulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. \nNam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. "
+      ],
+      "id": "5f2aqkHVa1U"
+    },
+    {
+      "title": "Toplantı 2",
+      "date": "2026-07-05",
+      "notes": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. "
+      ],
+      "id": "l3BN3fqVgOM"
+    },
+    {
+      "title": "Toplantı 3",
+      "date": "2025-04-12",
+      "notes": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. "
+      ],
+      "id": "46wMHqFI3y8"
+    },
+    {
+      "title": "Toplantı 4",
+      "date": "2002-02-25",
+      "notes": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. ",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. "
+      ],
+      "id": "02ifZgI0DLc"
+    },
+    {
+      "title": "Toplantı 4",
+      "date": "2020-08-03",
+      "notes": [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac risus vulputate, consectetur nulla ac, tempor ex. Phasellus et gravida ante, et posuere nulla. Sed ut felis vitae ante egestas suscipit sed vel magna. Curabitur mauris dolor, fringilla nec dui id, rutrum egestas arcu. Nam id imperdiet urna. Proin vitae nisl turpis. Mauris molestie cursus massa at. "
+      ],
+      "id": "z6s5mIqWe5E"
+    }
+  ],
+  "tasks": [
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Merve",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": true,
+      "id": "boVY1vDt6TY"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Melissa",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": true,
+      "id": "VAVloYLmoqo"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Merve",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": true,
+      "id": "qOx-_VqUShk"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Merve",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": true,
+      "id": "HW1lxGGJud0"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Merve",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": true,
+      "id": "Jq-6OKFUy0o"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Kübra",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": false,
+      "id": "IMBpPbPO6yc"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Ayşe",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": false,
+      "id": "vyefjq7uxl0"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Ayşe",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": false,
+      "id": "yQhsPkWpbgY"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Berat",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": false,
+      "id": "f7KdNzH-A5o"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Berat",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": false,
+      "id": "UPpVJSl2XLY"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Berat",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": true,
+      "id": "7_94R39U5Sw"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Berat",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": false,
+      "id": "D-yQzo_vPCc"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Berat",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": false,
+      "id": "CSdIInzB7Gs"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Berat",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": false,
+      "id": "auL44ZCA9wo"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Berat",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": false,
+      "id": "29tnvbUeW_M"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Berat",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": false,
+      "id": "ZdClaVG7fSA"
+    },
+    {
+      "meetingId": "5f2aqkHVa1U",
+      "assignee": "Berat",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt scelerisque tortor posuere bibendum. Aliquam risus tortor, ullamcorper. ",
+      "completed": false,
+      "id": "MQ99SDXkCps"
+    }
+  ],
+  "users": [
+    {
+      "name": "Zafer",
+      "id": "dEECPyJIkEM"
+    },
+    {
+      "name": "Ayşe",
+      "id": "dDFi7oLzpUk"
+    },
+    {
+      "name": "Üzeyr",
+      "id": "aYCxg6VDHNM"
+    },
+    {
+      "name": "Merve",
+      "id": "yDA94XhfiL8"
+    },
+    {
+      "name": "Melissa",
+      "id": "vH05oP6LrLA"
+    },
+    {
+      "name": "Akın",
+      "id": "keA0ibgniLc"
+    },
+    {
+      "name": "Raşit",
+      "id": "0-Bicv8XIv4"
+    },
+    {
+      "name": "Kübra",
+      "id": "QIEhquamt8Q"
+    },
+    {
+      "name": "Serdar",
+      "id": "BXLDbcrt2Zs"
+    },
+    {
+      "name": "İbrahim",
+      "id": "tDyTTRVXrO4"
+    },
+    {
+      "name": "Berat",
+      "id": "3SFyd72xYXs"
+    },
+    {
+      "name": "Abdullah",
+      "id": "Tq7ad0IY4Fk"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
